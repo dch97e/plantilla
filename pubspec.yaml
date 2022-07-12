@@ -39,6 +39,12 @@ dependencies:
   animations: ^2.0.3
   flutter_native_splash: ^2.2.4
 
+  light_sliver_view:
+    git:
+      url: https://bitbucket.org/hiberus/mobile-flutter-flutter-components.git
+      path: light_sliver_view
+      ref: feature/light_sliver_view
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5

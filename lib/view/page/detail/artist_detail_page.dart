@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/model/artist.dart';
-import 'package:flutter_mvvm/view/widget/light_sliver_view.dart';
+import 'package:light_sliver_view/light_sliver_view.dart';
 
 class ArtistDetailPage extends StatefulWidget {
   final Artist artist;
