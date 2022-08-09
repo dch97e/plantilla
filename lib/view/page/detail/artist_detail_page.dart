@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/model/artist.dart';
+import 'package:flutter_mvvm/view/common/resources/app_dimens.dart';
+import 'package:flutter_mvvm/view/common/resources/app_styles.dart';
 import 'package:light_sliver_view/light_sliver_view.dart';
 
 class ArtistDetailPage extends StatefulWidget {
@@ -19,7 +21,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
       body: LightSliverView(
         title: widget.artist.name,
         centerTitle: true,
-        expandedHeight: 260,
+        expandedHeight: AppDimens.sliverExpandedHeight,
         expandedContent: Stack(
           fit: StackFit.expand,
           children: [
@@ -39,7 +41,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(AppDimens.mediumMargin),
                   child: Text(
                     widget.artist.name,
                     style: const TextStyle(fontSize: 28, color: Colors.white),
@@ -52,9 +54,9 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
         content: SliverFillRemaining(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(AppDimens.mediumMargin),
               child: Text(widget.artist.title,
-                  style: const TextStyle(fontSize: 18)),
+                  style: AppStyles.bigTextStyle),
             ),
           ),
         ),

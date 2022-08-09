@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/view/common/localization/localization.dart';
-import 'package:flutter_mvvm/view/common/widget_extensions.dart';
+import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
 import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 

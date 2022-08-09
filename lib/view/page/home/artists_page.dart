@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 import 'package:flutter_mvvm/view/base/resource_state.dart';
-import 'package:flutter_mvvm/view/common/widget_extensions.dart';
+import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
 import 'package:flutter_mvvm/view/page/detail/artist_detail_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/artists_view_model.dart';
 import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
@@ -15,7 +15,8 @@ class ArtistsPage extends StatefulWidget {
   State<ArtistsPage> createState() => _ArtistsPageState();
 }
 
-class _ArtistsPageState extends State<ArtistsPage> with AutomaticKeepAliveClientMixin{
+class _ArtistsPageState extends State<ArtistsPage>
+    with AutomaticKeepAliveClientMixin {
   final ArtistsViewModel viewModel = ArtistsViewModel();
   List<Artist> data = List.empty();
 
@@ -68,8 +69,9 @@ class _ArtistsPageState extends State<ArtistsPage> with AutomaticKeepAliveClient
                 backgroundImage: CachedNetworkImageProvider(artist.avatar),
               ),
             ),
-            onTap: (() =>
-                {context.navigateTo(ArtistDetailPage(artist: artist))}),
+            onTap: (() => {
+              context.navigateTo(ArtistDetailPage(artist: artist))
+            }),
           );
         },
       ),
