@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/view/common/localization/localization.dart';
 import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
+import 'package:flutter_mvvm/view/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 
@@ -34,13 +35,24 @@ class _AboutPageState extends State<AboutPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          viewModel.signOut();
-        },
-        child: Text(Localization.of(context).string('sign_out')),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(AppDimens.mediumMargin),
+          child: Text(
+              Localization.of(context)
+                  .string('about_description', params: ['Dart', 'Clean Architecture']),
+              textAlign: TextAlign.center),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            viewModel.signOut();
+          },
+          child: Text(Localization.of(context)
+              .string('sign_out', params: ['OK', 'KO'])),
+        )
+      ],
     );
   }
 
