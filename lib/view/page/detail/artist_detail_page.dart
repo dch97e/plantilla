@@ -21,6 +21,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
       body: LightSliverView(
         title: widget.artist.name,
         centerTitle: true,
+        darkModeSupport: true,
         expandedHeight: AppDimens.sliverExpandedHeight,
         expandedContent: Stack(
           fit: StackFit.expand,

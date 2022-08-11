@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter MVVM',
       theme: AppStyles.appTheme,
+      darkTheme: AppStyles.appDarkTheme,
+      themeMode: ThemeMode.system, // Enable automatic dark theme support
       localizationsDelegates: const [
         Localization.delegate,
         GlobalMaterialLocalizations.delegate,
