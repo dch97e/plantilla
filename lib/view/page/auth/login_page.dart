@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/view/common/widget_extensions.dart';
+import 'package:flutter_mvvm/view/common/localization/localization.dart';
+import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
+import 'package:flutter_mvvm/view/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/view/page/home/home_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
@@ -51,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Login"),
+        title: Text(Localization.of(context).string('sign_in')),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -59,42 +61,42 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: Column(
             children: [
-              const SizedBox(height: 32),
+              const SizedBox(height: AppDimens.bigMargin),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: AppDimens.mediumMargin),
                 child: TextFormField(
                   controller: emailFieldController,
                   keyboardType: TextInputType.text,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Email can not be empty';
+                      return Localization.of(context).string('error_empty_field');
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Username',
-                    hintText: 'Enter your username',
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: Localization.of(context).string('sign_in_username'),
+                    hintText: Localization.of(context).string('sign_in_username_hint'),
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: AppDimens.mediumMargin),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: AppDimens.mediumMargin),
                 child: TextFormField(
                   controller: passwordFieldController,
                   keyboardType: TextInputType.text,
                   obscureText: _passwordHidden,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Password can not be empty';
+                      return Localization.of(context).string('error_empty_field');
                     }
                     return null;
                   },
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
+                    labelText: Localization.of(context).string('sign_in_password'),
+                    hintText: Localization.of(context).string('sign_in_password_hint'),
                     suffixIcon: InkWell(
                       onTap: _togglePasswordView,
                       child: Icon(
@@ -106,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: AppDimens.semiBigMargin),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -117,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                         passwordFieldController.text);
                   }
                 },
-                child: const Text('Login'),
+                child: Text(Localization.of(context).string('sign_in')),
               ),
             ],
           ),
