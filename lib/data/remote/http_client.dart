@@ -47,7 +47,7 @@ class HttpClient {
 
   Future<void> _refreshToken() async {
     final refreshToken = await CredentialsWallet.getRefreshToken();
-    final response = await dio.post(NetworkEndpoints.refreshTokenUrl,
+    final response = await Dio().post(NetworkEndpoints.refreshTokenUrl,
         data: {CredentialsWallet.refreshTokenKey: refreshToken});
 
     if (response.statusCode == 200) {
@@ -63,7 +63,7 @@ class HttpClient {
     final options =
         Options(method: requestOptions.method, headers: headers);
 
-    return dio.request<dynamic>(requestOptions.path,
+    return Dio().request<dynamic>(requestOptions.path,
         data: requestOptions.data,
         queryParameters: requestOptions.queryParameters,
         options: options);
