@@ -8,7 +8,8 @@ import 'package:flutter_mvvm/view/common/errorhandling/app_action.dart';
 import 'package:flutter_mvvm/view/errorbuilder/auth_error_builder.dart';
 
 class AuthViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthDataImpl();
+  final AuthRepository _authRepository;
+  AuthViewModel(this._authRepository);
 
   StreamController<ResourceState> loginState =
       StreamController<ResourceState>();

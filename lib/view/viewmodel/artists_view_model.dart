@@ -9,7 +9,8 @@ import 'package:flutter_mvvm/view/errorbuilder/artists_error_builder.dart';
 import '../../data/artists/artists_data_impl.dart';
 
 class ArtistsViewModel extends BaseViewModel {
-  final ArtistsRepository _artistsRepository = ArtistsDataImpl();
+  final ArtistsRepository _artistsRepository;
+  ArtistsViewModel(this._artistsRepository);
 
   StreamController<ResourceState> artistsState =
       StreamController<ResourceState>();
