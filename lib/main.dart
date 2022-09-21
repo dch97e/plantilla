@@ -6,7 +6,7 @@ import 'package:flutter_mvvm/view/di/app_modules.dart';
 import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
 
 void main() {
-  AppModules().setup();
+  AppModules().setup(); // Setup dependency injection
   runApp(const MyApp());
 }
 
@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter MVVM',
       theme: AppStyles.appTheme,
       darkTheme: AppStyles.appDarkTheme,
-      themeMode: ThemeMode.system, // Enable automatic dark theme support
+      themeMode: ThemeMode.system,
+      // Enable automatic dark theme support
       localizationsDelegates: const [
         Localization.delegate,
         GlobalMaterialLocalizations.delegate,
