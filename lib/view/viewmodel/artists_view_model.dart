@@ -6,10 +6,10 @@ import 'package:flutter_mvvm/view/base/resource_state.dart';
 import 'package:flutter_mvvm/view/common/errorhandling/app_action.dart';
 import 'package:flutter_mvvm/view/errorbuilder/artists_error_builder.dart';
 
-import '../../data/artists/artists_data_impl.dart';
-
 class ArtistsViewModel extends BaseViewModel {
-  final ArtistsRepository _artistsRepository = ArtistsDataImpl();
+  final ArtistsRepository _artistsRepository;
+
+  ArtistsViewModel(this._artistsRepository);
 
   StreamController<ResourceState> artistsState =
       StreamController<ResourceState>();
@@ -21,9 +21,9 @@ class ArtistsViewModel extends BaseViewModel {
         .getArtists()
         .then((value) => artistsState.add(ResourceState.completed(value)))
         .catchError((e) {
-          artistsState.add(ResourceState.error(
-              ArtistsErrorBuilder.create(e, AppAction.GET_ARTISTS).build()));
-        });
+      artistsState.add(ResourceState.error(
+          ArtistsErrorBuilder.create(e, AppAction.GET_ARTISTS).build()));
+    });
   }
 
   @override

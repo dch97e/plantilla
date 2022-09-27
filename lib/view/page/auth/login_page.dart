@@ -8,6 +8,7 @@ import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 
 import '../../base/resource_state.dart';
+import '../../di/app_modules.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final AuthViewModel viewModel = AuthViewModel();
+  final viewModel = inject<AuthViewModel>();
 
   bool _passwordHidden = true;
   final _formKey = GlobalKey<FormState>();
@@ -63,40 +64,48 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const SizedBox(height: AppDimens.bigMargin),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppDimens.mediumMargin),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.mediumMargin),
                 child: TextFormField(
                   controller: emailFieldController,
                   keyboardType: TextInputType.text,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return Localization.of(context).string('error_empty_field');
+                      return Localization.of(context)
+                          .string('error_empty_field');
                     }
                     return null;
                   },
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    labelText: Localization.of(context).string('sign_in_username'),
-                    hintText: Localization.of(context).string('sign_in_username_hint'),
+                    labelText:
+                        Localization.of(context).string('sign_in_username'),
+                    hintText: Localization.of(context)
+                        .string('sign_in_username_hint'),
                   ),
                 ),
               ),
               const SizedBox(height: AppDimens.mediumMargin),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppDimens.mediumMargin),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.mediumMargin),
                 child: TextFormField(
                   controller: passwordFieldController,
                   keyboardType: TextInputType.text,
                   obscureText: _passwordHidden,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return Localization.of(context).string('error_empty_field');
+                      return Localization.of(context)
+                          .string('error_empty_field');
                     }
                     return null;
                   },
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    labelText: Localization.of(context).string('sign_in_password'),
-                    hintText: Localization.of(context).string('sign_in_password_hint'),
+                    labelText:
+                        Localization.of(context).string('sign_in_password'),
+                    hintText: Localization.of(context)
+                        .string('sign_in_password_hint'),
                     suffixIcon: InkWell(
                       onTap: _togglePasswordView,
                       child: Icon(
