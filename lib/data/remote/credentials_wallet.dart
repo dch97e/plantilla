@@ -10,9 +10,6 @@ class CredentialsWallet {
   }
 
   static getAccessToken() async {
-    print(await _getString(accessTokenKey));
-    print(await getExpirationTimeStamp());
-    print(await getRefreshToken());
     return await _getString(accessTokenKey);
   }
 
