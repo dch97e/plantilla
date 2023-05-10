@@ -6,13 +6,15 @@ A simple application that serves as a template for the development of Flutter ap
 
 - [Dart](https://dart.dev/get-dart)
 - [Flutter](https://docs.flutter.dev/get-started/install)
-- [flutter_localizations](https://docs.flutter.dev/development/accessibility-and-localization/internationalization)
 - [dio](https://pub.dev/packages/dio)
-- [shared_preferences](https://pub.dev/packages/shared_preferences)
+- [go_router](https://pub.dev/packages/go_router)
+- [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage)
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
 - [animations](https://pub.dev/packages/animations)
 - [flutter_native_splash](https://pub.dev/packages/flutter_native_splash)
+- [cupertino_icons](https://pub.dev/packages/cupertino_icons)
 - [flutter_lints](https://pub.dev/packages/flutter_lints)
+- [flutter_localizations](https://docs.flutter.dev/development/accessibility-and-localization/internationalization)
 
 ## Requirements
 - Flutter SDK 3.0+
