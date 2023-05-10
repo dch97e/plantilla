@@ -6,8 +6,8 @@ import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_styles.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
-import 'package:flutter_mvvm/presentation/navigation/navigation_extensions.dart';
-import 'package:flutter_mvvm/presentation/view/home/home_page.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
+import 'package:go_router/go_router.dart';
 
 import 'viewmodel/auth_view_model.dart';
 
@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
           break;
         case Status.COMPLETED:
           LoadingOverlay.hide();
-          context.navigateReplacing(const HomePage());
+          context.go(NavigationRoutes.artistsRoute);
           break;
         case Status.ERROR:
           LoadingOverlay.hide();

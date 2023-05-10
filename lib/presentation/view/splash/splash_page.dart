@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/di/app_modules.dart';
-import 'package:flutter_mvvm/presentation/navigation/navigation_extensions.dart';
-import 'package:flutter_mvvm/presentation/view/auth/login_page.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
-import 'package:flutter_mvvm/presentation/view/home/home_page.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -22,10 +21,10 @@ class _SplashPageState extends State<SplashPage> {
     viewModel.authenticatedState.stream.listen((state) {
       switch (state) {
         case true:
-          context.navigateReplacing(const HomePage());
+          context.go(NavigationRoutes.artistsRoute);
           break;
         case false:
-          context.navigateReplacing(const LoginPage());
+          context.go(NavigationRoutes.loginRoute);
           break;
       }
     });

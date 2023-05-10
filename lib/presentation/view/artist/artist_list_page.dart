@@ -5,9 +5,9 @@ import 'package:flutter_mvvm/model/artist.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
-import 'package:flutter_mvvm/presentation/navigation/navigation_extensions.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
+import 'package:go_router/go_router.dart';
 
-import 'artist_detail_page.dart';
 import 'viewmodel/artist_view_model.dart';
 
 class ArtistListPage extends StatefulWidget {
@@ -72,7 +72,7 @@ class _ArtistListPageState extends State<ArtistListPage>
               ),
             ),
             onTap: (() =>
-                {context.navigateTo(ArtistDetailPage(artist: artist))}),
+                context.go(NavigationRoutes.artistsRoute, extra: artist)),
           );
         },
       ),
