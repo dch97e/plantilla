@@ -1,8 +1,7 @@
 import 'package:flutter_mvvm/data/remote/credentials_wallet.dart';
+import 'package:flutter_mvvm/data/remote/error/remote_error_mapper.dart';
 import 'package:flutter_mvvm/data/remote/http_client.dart';
 import 'package:flutter_mvvm/data/remote/network_endpoints.dart';
-
-import '../../remote/base/error/remote_error_mapper.dart';
 
 class AuthRemoteImpl {
   final HttpClient _httpClient;

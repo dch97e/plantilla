@@ -1,0 +1,33 @@
+import 'dart:async';
+
+import 'package:flutter_mvvm/domain/artists_repository.dart';
+import 'package:flutter_mvvm/presentation/common/base/base_view_model.dart';
+import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
+import 'package:flutter_mvvm/presentation/common/errorhandling/app_action.dart';
+import 'package:flutter_mvvm/presentation/view/artist/viewmodel/artists_error_builder.dart';
+
+class ArtistsViewModel extends BaseViewModel {
+  final ArtistsRepository _artistsRepository;
+
+  ArtistsViewModel(this._artistsRepository);
+
+  StreamController<ResourceState> artistsState =
+      StreamController<ResourceState>();
+
+  Future<void> fetchArtists() async {
+    artistsState.add(ResourceState.loading());
+
+    _artistsRepository
+        .getArtists()
+        .then((value) => artistsState.add(ResourceState.completed(value)))
+        .catchError((e) {
+      artistsState.add(ResourceState.error(
+          ArtistsErrorBuilder.create(e, AppAction.GET_ARTISTS).build()));
+    });
+  }
+
+  @override
+  void dispose() {
+    artistsState.close();
+  }
+}

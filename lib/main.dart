@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_mvvm/di/app_modules.dart';
-import 'package:flutter_mvvm/view/common/localization/localization.dart';
-import 'package:flutter_mvvm/view/common/resources/app_styles.dart';
-import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
+
+import 'di/app_modules.dart';
+import 'presentation/common/localization/localization.dart';
+import 'presentation/common/resources/app_styles.dart';
+import 'presentation/view/splash/splash_page.dart';
 
 void main() {
   AppModules().setup(); // Setup dependency injection
