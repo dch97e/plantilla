@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/di/app_modules.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
+import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
@@ -56,29 +57,35 @@ class _ArtistListPageState extends State<ArtistListPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return RefreshIndicator(
-      child: ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          final artist = data[index];
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(Localization.of(context).string('artists_title')),
+        centerTitle: true,
+      ),
+      body: RefreshIndicator(
+        child: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            final artist = data[index];
 
-          return ListTile(
-            title: Text(artist.name),
-            subtitle: Text(artist.title),
-            leading: Hero(
-              tag: artist.id,
-              child: CircleAvatar(
-                backgroundImage: CachedNetworkImageProvider(artist.avatar),
+            return ListTile(
+              title: Text(artist.name),
+              subtitle: Text(artist.title),
+              leading: Hero(
+                tag: artist.id,
+                child: CircleAvatar(
+                  backgroundImage: CachedNetworkImageProvider(artist.avatar),
+                ),
               ),
-            ),
-            onTap: (() =>
-                context.go(NavigationRoutes.artistsRoute, extra: artist)),
-          );
+              onTap: (() => context.push(NavigationRoutes.artistDetailRoute,
+                  extra: artist)),
+            );
+          },
+        ),
+        onRefresh: () async {
+          viewModel.fetchArtists();
         },
       ),
-      onRefresh: () async {
-        viewModel.fetchArtists();
-      },
     );
   }
 

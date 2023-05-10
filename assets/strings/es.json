@@ -1,6 +1,7 @@
 {
   "app_title": "Flutter MVVM",
   "home_title": "Inicio",
+  "artists_title": "Artistas",
   "about_title": "Acerca de",
   "about_description": "Ejemplo de MVVM en Flutter.\n\nDesarrollado en lenguaje %0s siguiendo los principios de %1s.",
   "sign_in": "Iniciar sesión",

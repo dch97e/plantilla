@@ -1,6 +1,7 @@
 {
   "app_title": "Flutter MVVM",
   "home_title": "Home",
+  "artists_title": "Artists",
   "about_title": "About",
   "about_description": "Flutter MVVM Example Project.\n\nDeveloped in %0s following the %1s principles.",
   "sign_in": "Sign in",
