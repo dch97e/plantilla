@@ -5,11 +5,11 @@ import 'package:flutter_mvvm/data/auth/auth_data_impl.dart';
 import 'package:flutter_mvvm/domain/artists_repository.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../data/auth/remote/auth_remote_impl.dart';
-import '../../data/remote/http_client.dart';
-import '../../domain/auth_repository.dart';
-import '../viewmodel/artists_view_model.dart';
-import '../viewmodel/auth_view_model.dart';
+import '../data/auth/remote/auth_remote_impl.dart';
+import '../data/remote/http_client.dart';
+import '../domain/auth_repository.dart';
+import '../view/viewmodel/artists_view_model.dart';
+import '../view/viewmodel/auth_view_model.dart';
 
 final inject = GetIt.instance;
 
@@ -33,7 +33,8 @@ class AppModules {
   _setupArtistsModule() {
     inject.registerSingleton(ArtistSerializer());
     inject.registerFactory(() => ArtistsRemoteImpl(inject.get(), inject.get()));
-    inject.registerFactory<ArtistsRepository>(() => ArtistsDataImpl(inject.get()));
+    inject.registerFactory<ArtistsRepository>(
+        () => ArtistsDataImpl(inject.get()));
     inject.registerFactory(() => ArtistsViewModel(inject.get()));
   }
 }

@@ -7,8 +7,8 @@ import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 
+import '../../../di/app_modules.dart';
 import '../../base/resource_state.dart';
-import '../../di/app_modules.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

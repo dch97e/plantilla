@@ -42,7 +42,7 @@ class DioLoggingInterceptor extends Interceptor {
 
     printLog('Uri', response.realUri);
     printLog('Status code', response.statusCode ?? -1);
-    printLog('Redirect', response.isRedirect ?? false);
+    printLog('Redirect', response.isRedirect);
     printLog('Body', response.data ?? "");
 
     debugPrint('--> END HTTP Response');
