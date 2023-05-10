@@ -3,6 +3,7 @@ import 'package:flutter_mvvm/di/app_modules.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
+import 'package:flutter_mvvm/presentation/common/resources/app_styles.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_extensions.dart';
@@ -53,83 +54,98 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Localization.of(context).string('sign_in')),
-        centerTitle: true,
+        toolbarHeight: 0,
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              const SizedBox(height: AppDimens.bigMargin),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimens.mediumMargin),
-                child: TextFormField(
-                  controller: emailFieldController,
-                  keyboardType: TextInputType.text,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return Localization.of(context)
-                          .string('error_empty_field');
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText:
-                        Localization.of(context).string('sign_in_username'),
-                    hintText: Localization.of(context)
-                        .string('sign_in_username_hint'),
-                  ),
-                ),
-              ),
-              const SizedBox(height: AppDimens.mediumMargin),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimens.mediumMargin),
-                child: TextFormField(
-                  controller: passwordFieldController,
-                  keyboardType: TextInputType.text,
-                  obscureText: _passwordHidden,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return Localization.of(context)
-                          .string('error_empty_field');
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText:
-                        Localization.of(context).string('sign_in_password'),
-                    hintText: Localization.of(context)
-                        .string('sign_in_password_hint'),
-                    suffixIcon: InkWell(
-                      onTap: _togglePasswordView,
-                      child: Icon(
-                        _passwordHidden
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+      body: Center(
+        child: Card(
+          margin:
+              const EdgeInsets.symmetric(horizontal: AppDimens.mediumMargin),
+          elevation: AppDimens.cardBigElevation,
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  const SizedBox(height: AppDimens.bigMargin),
+                  Text(Localization.of(context).string('sign_in_welcome_title'),
+                      style: AppStyles.extraBigTextStyle),
+                  const SizedBox(height: AppDimens.extraSmallMargin),
+                  Text(
+                      Localization.of(context)
+                          .string('sign_in_welcome_subtitle'),
+                      style: AppStyles.smallTextStyle),
+                  const SizedBox(height: AppDimens.semiBigMargin),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppDimens.mediumMargin),
+                    child: TextFormField(
+                      controller: emailFieldController,
+                      keyboardType: TextInputType.text,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return Localization.of(context)
+                              .string('error_empty_field');
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        labelText:
+                            Localization.of(context).string('sign_in_username'),
+                        hintText: Localization.of(context)
+                            .string('sign_in_username_hint'),
                       ),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: AppDimens.semiBigMargin),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    FocusManager.instance.primaryFocus
-                        ?.unfocus(); // Close keyboard
+                  const SizedBox(height: AppDimens.mediumMargin),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppDimens.mediumMargin),
+                    child: TextFormField(
+                      controller: passwordFieldController,
+                      keyboardType: TextInputType.text,
+                      obscureText: _passwordHidden,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return Localization.of(context)
+                              .string('error_empty_field');
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        labelText:
+                            Localization.of(context).string('sign_in_password'),
+                        hintText: Localization.of(context)
+                            .string('sign_in_password_hint'),
+                        suffixIcon: InkWell(
+                          onTap: _togglePasswordView,
+                          child: Icon(
+                            _passwordHidden
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: AppDimens.semiBigMargin),
+                  FilledButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        FocusManager.instance.primaryFocus
+                            ?.unfocus(); // Close keyboard
 
-                    viewModel.login(emailFieldController.text,
-                        passwordFieldController.text);
-                  }
-                },
-                child: Text(Localization.of(context).string('sign_in')),
+                        viewModel.login(emailFieldController.text,
+                            passwordFieldController.text);
+                      }
+                    },
+                    child: Text(Localization.of(context).string('sign_in')),
+                  ),
+                  const SizedBox(height: AppDimens.semiBigMargin),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

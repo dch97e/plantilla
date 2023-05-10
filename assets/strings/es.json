@@ -4,6 +4,8 @@
   "about_title": "Acerca de",
   "about_description": "Ejemplo de MVVM en Flutter.\n\nDesarrollado en lenguaje %0s siguiendo los principios de %1s.",
   "sign_in": "Iniciar sesión",
+  "sign_in_welcome_title": "¡Bienvenid@!",
+  "sign_in_welcome_subtitle": "Introduce tus datos de usuario para continuar",
   "sign_in_username": "Usuario",
   "sign_in_username_hint": "Introduce tu usuario",
   "sign_in_password": "Contraseña",

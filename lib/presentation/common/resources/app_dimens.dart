@@ -12,4 +12,7 @@ class AppDimens {
   static const double extraSmallMargin = 4.0;
 
   static const double sliverExpandedHeight = 260.0;
+
+  static const double cardDefaultElevation = 2.0;
+  static const double cardBigElevation = 4.0;
 }

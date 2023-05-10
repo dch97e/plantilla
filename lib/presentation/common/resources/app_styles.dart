@@ -29,5 +29,7 @@ class AppStyles {
   );
 
   // Text Styles
+  static const TextStyle smallTextStyle = TextStyle(fontSize: 14);
   static const TextStyle bigTextStyle = TextStyle(fontSize: 18);
+  static const TextStyle extraBigTextStyle = TextStyle(fontSize: 22);
 }
