@@ -33,18 +33,18 @@ class _LoginPageState extends State<LoginPage> {
     viewModel.loginState.stream.listen((state) {
       switch (state.status) {
         case Status.LOADING:
-          LoadingOverlay.of(context).show();
+          LoadingOverlay.show(context);
           break;
         case Status.COMPLETED:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           context.navigateReplacing(const HomePage());
           break;
         case Status.ERROR:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           ErrorOverlay.of(context).show(state.error);
           break;
         default:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           break;
       }
     });

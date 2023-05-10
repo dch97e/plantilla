@@ -29,22 +29,22 @@ class _ArtistListPageState extends State<ArtistListPage>
     viewModel.artistListState.stream.listen((state) {
       switch (state.status) {
         case Status.LOADING:
-          LoadingOverlay.of(context).show();
+          LoadingOverlay.show(context);
           break;
         case Status.COMPLETED:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           setState(() {
             data = state.data;
           });
           break;
         case Status.ERROR:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           ErrorOverlay.of(context).show(state.error, onRetry: () {
             viewModel.fetchArtists();
           });
           break;
         default:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           break;
       }
     });
