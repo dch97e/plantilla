@@ -1,4 +1,4 @@
-import 'package:flutter_mvvm/presentation/common/errorhandling/error_bundle.dart';
+import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle.dart';
 
 // ignore: constant_identifier_names
 enum Status { IDLE, LOADING, COMPLETED, ERROR }

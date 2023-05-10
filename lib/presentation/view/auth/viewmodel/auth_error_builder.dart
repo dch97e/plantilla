@@ -1,8 +1,8 @@
 import 'package:flutter_mvvm/model/exception/http_exception.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/app_action.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/app_error.dart';
-import 'package:flutter_mvvm/presentation/common/errorhandling/error_bundle.dart';
-import 'package:flutter_mvvm/presentation/common/errorhandling/error_bundle_builder.dart';
+import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle.dart';
+import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle_builder.dart';
 
 class AuthErrorBuilder extends ErrorBundleBuilder {
   AuthErrorBuilder.create(Exception exception, AppAction appAction)
