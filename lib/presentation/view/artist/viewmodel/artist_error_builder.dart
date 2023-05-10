@@ -4,8 +4,8 @@ import 'package:flutter_mvvm/presentation/common/errorhandling/app_error.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/error_bundle.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/error_bundle_builder.dart';
 
-class ArtistsErrorBuilder extends ErrorBundleBuilder {
-  ArtistsErrorBuilder.create(Exception exception, AppAction appAction)
+class ArtistErrorBuilder extends ErrorBundleBuilder {
+  ArtistErrorBuilder.create(Exception exception, AppAction appAction)
       : super.create(exception, appAction);
 
   @override

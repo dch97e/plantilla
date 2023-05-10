@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
 import 'package:flutter_mvvm/presentation/view/about/about_page.dart';
-import 'package:flutter_mvvm/presentation/view/artist/artists_page.dart';
+import 'package:flutter_mvvm/presentation/view/artist/artist_list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _pages = [
-    const ArtistsPage(),
+    const ArtistListPage(),
     const AboutPage(),
   ];
   final pageController = PageController();

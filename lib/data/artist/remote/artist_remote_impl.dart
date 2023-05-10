@@ -3,9 +3,9 @@ import 'package:flutter_mvvm/data/remote/http_client.dart';
 import 'package:flutter_mvvm/data/remote/network_endpoints.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 
-class ArtistsRemoteImpl {
+class ArtistRemoteImpl {
   final HttpClient _httpClient;
-  ArtistsRemoteImpl(this._httpClient);
+  ArtistRemoteImpl(this._httpClient);
 
   Future<List<Artist>> getArtists() async {
     try {

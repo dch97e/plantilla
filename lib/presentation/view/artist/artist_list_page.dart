@@ -8,25 +8,25 @@ import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.
 import 'package:flutter_mvvm/presentation/navigation/navigation_extensions.dart';
 
 import 'artist_detail_page.dart';
-import 'viewmodel/artists_view_model.dart';
+import 'viewmodel/artist_view_model.dart';
 
-class ArtistsPage extends StatefulWidget {
-  const ArtistsPage({Key? key}) : super(key: key);
+class ArtistListPage extends StatefulWidget {
+  const ArtistListPage({Key? key}) : super(key: key);
 
   @override
-  State<ArtistsPage> createState() => _ArtistsPageState();
+  State<ArtistListPage> createState() => _ArtistListPageState();
 }
 
-class _ArtistsPageState extends State<ArtistsPage>
+class _ArtistListPageState extends State<ArtistListPage>
     with AutomaticKeepAliveClientMixin {
-  final viewModel = inject<ArtistsViewModel>();
+  final viewModel = inject<ArtistViewModel>();
   List<Artist> data = List.empty();
 
   @override
   void initState() {
     super.initState();
 
-    viewModel.artistsState.stream.listen((state) {
+    viewModel.artistListState.stream.listen((state) {
       switch (state.status) {
         case Status.LOADING:
           LoadingOverlay.of(context).show();
