@@ -34,6 +34,7 @@ final router = GoRouter(
       // Routes
       GoRoute(
           path: NavigationRoutes.initialRoute,
+          parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const SplashPage()),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => HomePage(navigationShell: shell),
@@ -41,6 +42,7 @@ final router = GoRouter(
           StatefulShellBranch(navigatorKey: _artistsNavigatorKey, routes: [
             GoRoute(
                 path: NavigationRoutes.artistsRoute,
+                parentNavigatorKey: _artistsNavigatorKey,
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: ArtistListPage()),
                 routes: [
@@ -55,6 +57,7 @@ final router = GoRouter(
           StatefulShellBranch(navigatorKey: _aboutNavigatorKey, routes: [
             GoRoute(
                 path: NavigationRoutes.aboutRoute,
+                parentNavigatorKey: _aboutNavigatorKey,
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: AboutPage())),
           ])
@@ -62,5 +65,6 @@ final router = GoRouter(
       ),
       GoRoute(
           path: NavigationRoutes.loginRoute,
+          parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const LoginPage()),
     ]);
