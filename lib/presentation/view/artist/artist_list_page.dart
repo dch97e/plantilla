@@ -77,7 +77,7 @@ class _ArtistListPageState extends State<ArtistListPage>
                   backgroundImage: CachedNetworkImageProvider(artist.avatar),
                 ),
               ),
-              onTap: (() => context.push(NavigationRoutes.artistDetailRoute,
+              onTap: (() => context.go(NavigationRoutes.artistDetailRoute,
                   extra: artist)),
             );
           },

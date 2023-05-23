@@ -55,8 +55,7 @@ class _AboutPageState extends State<AboutPage>
             onPressed: () {
               viewModel.signOut();
             },
-            child: Text(Localization.of(context)
-                .string('sign_out', params: ['OK', 'KO'])),
+            child: Text(Localization.of(context).string('sign_out')),
           )
         ],
       ),

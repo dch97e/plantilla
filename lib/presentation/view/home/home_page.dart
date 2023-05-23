@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
-import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.child}) : super(key: key);
+  const HomePage({Key? key, required this.navigationShell}) : super(key: key);
 
-  final Widget child;
+  final StatefulNavigationShell navigationShell;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,23 +15,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child,
+      body: widget.navigationShell,
       bottomNavigationBar: _getBottomNavigationBar(),
     );
   }
 
   Widget _getBottomNavigationBar() {
     return NavigationBar(
-      selectedIndex: _calculateSelectedIndex(context),
+      selectedIndex: widget.navigationShell.currentIndex,
       onDestinationSelected: (index) {
-        switch (index) {
-          case 0:
-            return context.go(NavigationRoutes.artistsRoute);
-          case 1:
-            return context.go(NavigationRoutes.aboutRoute);
-          default:
-            return context.go(NavigationRoutes.artistsRoute);
-        }
+        widget.navigationShell.goBranch(
+          index,
+          initialLocation: index == widget.navigationShell.currentIndex,
+        );
       },
       destinations: [
         NavigationDestination(
@@ -45,19 +40,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
     );
-  }
-
-  int _calculateSelectedIndex(BuildContext context) {
-    final GoRouter route = GoRouter.of(context);
-    final String location = route.location;
-
-    switch (location) {
-      case NavigationRoutes.artistsRoute:
-        return 0;
-      case NavigationRoutes.aboutRoute:
-        return 1;
-      default:
-        return 0;
-    }
   }
 }
