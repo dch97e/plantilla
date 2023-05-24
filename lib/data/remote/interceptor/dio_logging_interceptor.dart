@@ -26,7 +26,11 @@ class DioLoggingInterceptor extends Interceptor {
     if (err.response != null) {
       debugPrint('Status code: ${err.response?.statusCode.toString()}');
     }
-    printLog('Message', err.message);
+    printLog('Error', err.error ?? '');
+
+    if (err.message != null) {
+      printLog('Message', err.message ?? '');
+    }
 
     debugPrint('--> END HTTP Error');
   }
@@ -38,7 +42,7 @@ class DioLoggingInterceptor extends Interceptor {
 
     printLog('Uri', response.realUri);
     printLog('Status code', response.statusCode ?? -1);
-    printLog('Redirect', response.isRedirect ?? false);
+    printLog('Redirect', response.isRedirect);
     printLog('Body', response.data ?? "");
 
     debugPrint('--> END HTTP Response');

@@ -60,8 +60,7 @@ class HttpClient {
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
     final headers = requestOptions.headers;
     await _addAuthHeader(headers);
-    final options =
-        Options(method: requestOptions.method, headers: headers);
+    final options = Options(method: requestOptions.method, headers: headers);
 
     return Dio().request<dynamic>(requestOptions.path,
         data: requestOptions.data,
