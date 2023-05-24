@@ -19,7 +19,7 @@ class HttpClient {
     dio.interceptors
       ..add(DioLoggingInterceptor())
       ..add(QueuedInterceptorsWrapper(onRequest: (options, handler) async {
-        _addAuthHeader(options.headers);
+        await _addAuthHeader(options.headers);
         handler.next(options);
       }, onError: (DioError error, handler) async {
         if (error.response?.statusCode == 401) {
@@ -51,17 +51,16 @@ class HttpClient {
         data: {CredentialsWallet.refreshTokenKey: refreshToken});
 
     if (response.statusCode == 200) {
-      CredentialsWallet.saveAll(response.data);
+      await CredentialsWallet.saveAll(response.data);
     } else {
-      CredentialsWallet.clearAll();
+      await CredentialsWallet.clearAll();
     }
   }
 
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
     final headers = requestOptions.headers;
-    _addAuthHeader(headers);
-    final options =
-        Options(method: requestOptions.method, headers: headers);
+    await _addAuthHeader(headers);
+    final options = Options(method: requestOptions.method, headers: headers);
 
     return Dio().request<dynamic>(requestOptions.path,
         data: requestOptions.data,
