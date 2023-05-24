@@ -10,15 +10,14 @@ class AuthErrorBuilder extends ErrorBundleBuilder {
 
   @override
   ErrorBundle handle(HTTPException exception, AppAction appAction) {
-    String stringId = 'error_default';
     AppError appError = AppError.UNKNOWN;
 
     switch (exception.statusCode) {
       case 500:
-        stringId = 'error_server';
+        appError = AppError.SERVER;
         break;
     }
 
-    return ErrorBundle(exception, stringId, appAction, appError);
+    return ErrorBundle(exception, appAction, appError);
   }
 }

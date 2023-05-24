@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 
 import 'di/app_modules.dart';
-import 'presentation/common/localization/localization.dart';
 import 'presentation/common/resources/app_styles.dart';
 
 void main() {
@@ -23,16 +22,9 @@ class MyApp extends StatelessWidget {
       darkTheme: AppStyles.appDarkTheme,
       themeMode: ThemeMode.system, // Enable automatic dark theme support
       routerConfig: router,
-      localizationsDelegates: const [
-        Localization.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('es'),
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.app_title,
       debugShowCheckedModeBanner: false,
     );
   }

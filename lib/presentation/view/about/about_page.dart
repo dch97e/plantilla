@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/di/app_modules.dart';
-import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
+import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
@@ -38,7 +38,7 @@ class _AboutPageState extends State<AboutPage>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(Localization.of(context).string('about_title')),
+        title: Text(AppLocalizations.of(context)!.about_title),
         centerTitle: true,
       ),
       body: Column(
@@ -47,15 +47,15 @@ class _AboutPageState extends State<AboutPage>
           Padding(
             padding: const EdgeInsets.all(AppDimens.mediumMargin),
             child: Text(
-                Localization.of(context).string('about_description',
-                    params: ['Dart', 'Clean Architecture']),
+                AppLocalizations.of(context)!
+                    .about_description('Clean Architecture', 'Dart'),
                 textAlign: TextAlign.center),
           ),
           ElevatedButton(
             onPressed: () {
               viewModel.signOut();
             },
-            child: Text(Localization.of(context).string('sign_out')),
+            child: Text(AppLocalizations.of(context)!.sign_out),
           )
         ],
       ),

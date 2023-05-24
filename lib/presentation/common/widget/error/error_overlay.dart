@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm/presentation/common/errorhandling/app_error.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle.dart';
-import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
+import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
 
 class ErrorOverlay {
   BuildContext _context;
@@ -23,11 +24,11 @@ class ErrorOverlay {
         return WillPopScope(
           onWillPop: () => Future.value(false),
           child: AlertDialog(
-            title: Text(Localization.of(context).string('error_title')),
-            content: Text(Localization.of(context).string(error.stringId)),
+            title: Text(AppLocalizations.of(context)!.error_title),
+            content: Text(_getErrorMessage(context, error.appError)), // Change
             actions: [
               TextButton(
-                child: Text(Localization.of(context).string('action_ok')),
+                child: Text(AppLocalizations.of(context)!.action_ok),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -39,7 +40,7 @@ class ErrorOverlay {
                     Navigator.of(context).pop();
                     onRetry?.call();
                   },
-                  child: Text(Localization.of(context).string('action_retry')),
+                  child: Text(AppLocalizations.of(context)!.action_retry),
                 ),
               ),
             ],
@@ -47,5 +48,20 @@ class ErrorOverlay {
         );
       },
     );
+  }
+
+  String _getErrorMessage(BuildContext context, AppError appError) {
+    final locs = AppLocalizations.of(context)!;
+
+    switch (appError) {
+      case AppError.NO_INTERNET:
+        return locs.error_no_internet;
+      case AppError.TIMEOUT:
+        return locs.error_timeout;
+      case AppError.SERVER:
+        return locs.error_server;
+      default:
+        return locs.error_default;
+    }
   }
 }
