@@ -5,6 +5,7 @@ import 'package:flutter_mvvm/presentation/common/localization/app_localizations.
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_styles.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
+import 'package:flutter_mvvm/presentation/common/widget/input/password_form_field.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:go_router/go_router.dart';
@@ -21,7 +22,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final viewModel = inject<AuthViewModel>();
 
-  bool _passwordHidden = true;
   final _formKey = GlobalKey<FormState>();
   final emailFieldController = TextEditingController();
   final passwordFieldController = TextEditingController();
@@ -101,10 +101,8 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppDimens.mediumMargin),
-                      child: TextFormField(
+                      child: PasswordFormField(
                         controller: passwordFieldController,
-                        keyboardType: TextInputType.text,
-                        obscureText: _passwordHidden,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return AppLocalizations.of(context)!
@@ -118,14 +116,6 @@ class _LoginPageState extends State<LoginPage> {
                               AppLocalizations.of(context)!.sign_in_password,
                           hintText: AppLocalizations.of(context)!
                               .sign_in_password_hint,
-                          suffixIcon: InkWell(
-                            onTap: _togglePasswordView,
-                            child: Icon(
-                              _passwordHidden
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                          ),
                         ),
                       ),
                     ),
@@ -157,11 +147,5 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     super.dispose();
     viewModel.dispose(); // Avoid memory leaks
-  }
-
-  void _togglePasswordView() {
-    setState(() {
-      _passwordHidden = !_passwordHidden;
-    });
   }
 }
