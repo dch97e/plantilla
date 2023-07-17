@@ -12,13 +12,13 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final viewModel = inject<AuthViewModel>();
+  final _authViewModel = inject<AuthViewModel>();
 
   @override
   void initState() {
     super.initState();
 
-    viewModel.authenticatedState.stream.listen((state) {
+    _authViewModel.authenticatedState.stream.listen((state) {
       switch (state) {
         case true:
           context.go(NavigationRoutes.artistsRoute);
@@ -29,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
       }
     });
 
-    viewModel.isAuthenticated();
+    _authViewModel.isAuthenticated();
   }
 
   @override
@@ -42,6 +42,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void dispose() {
     super.dispose();
-    viewModel.dispose(); // Avoid memory leaks
+    _authViewModel.dispose(); // Avoid memory leaks
   }
 }

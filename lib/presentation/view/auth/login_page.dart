@@ -20,17 +20,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final viewModel = inject<AuthViewModel>();
+  final _authViewModel = inject<AuthViewModel>();
 
   final _formKey = GlobalKey<FormState>();
-  final emailFieldController = TextEditingController();
-  final passwordFieldController = TextEditingController();
+  final _emailFieldController = TextEditingController();
+  final _passwordFieldController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
 
-    viewModel.loginState.stream.listen((state) {
+    _authViewModel.loginState.stream.listen((state) {
       switch (state.status) {
         case Status.LOADING:
           LoadingOverlay.show(context);
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppDimens.mediumMargin),
                       child: TextFormField(
-                        controller: emailFieldController,
+                        controller: _emailFieldController,
                         keyboardType: TextInputType.text,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppDimens.mediumMargin),
                       child: PasswordFormField(
-                        controller: passwordFieldController,
+                        controller: _passwordFieldController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return AppLocalizations.of(context)!
@@ -126,8 +126,8 @@ class _LoginPageState extends State<LoginPage> {
                           FocusManager.instance.primaryFocus
                               ?.unfocus(); // Close keyboard
 
-                          viewModel.login(emailFieldController.text,
-                              passwordFieldController.text);
+                          _authViewModel.login(_emailFieldController.text,
+                              _passwordFieldController.text);
                         }
                       },
                       child: Text(AppLocalizations.of(context)!.sign_in),
@@ -146,6 +146,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void dispose() {
     super.dispose();
-    viewModel.dispose(); // Avoid memory leaks
+    _authViewModel.dispose(); // Avoid memory leaks
   }
 }

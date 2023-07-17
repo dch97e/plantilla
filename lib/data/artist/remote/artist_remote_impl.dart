@@ -14,7 +14,7 @@ class ArtistRemoteImpl {
       return response.data['items']
           .map<Artist>((data) => Artist.fromJson(data))
           .toList();
-    } on Exception catch (e) {
+    } catch (e) {
       throw RemoteErrorMapper.getException(e);
     }
   }

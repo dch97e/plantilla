@@ -20,14 +20,14 @@ class ArtistListPage extends StatefulWidget {
 
 class _ArtistListPageState extends State<ArtistListPage>
     with AutomaticKeepAliveClientMixin {
-  final viewModel = inject<ArtistViewModel>();
-  List<Artist> data = List.empty();
+  final _artistViewModel = inject<ArtistViewModel>();
+  List<Artist> _artistList = List.empty();
 
   @override
   void initState() {
     super.initState();
 
-    viewModel.artistListState.stream.listen((state) {
+    _artistViewModel.artistListState.stream.listen((state) {
       switch (state.status) {
         case Status.LOADING:
           LoadingOverlay.show(context);
@@ -35,13 +35,13 @@ class _ArtistListPageState extends State<ArtistListPage>
         case Status.COMPLETED:
           LoadingOverlay.hide();
           setState(() {
-            data = state.data;
+            _artistList = state.data;
           });
           break;
         case Status.ERROR:
           LoadingOverlay.hide();
           ErrorOverlay.of(context).show(state.error, onRetry: () {
-            viewModel.fetchArtists();
+            _artistViewModel.fetchArtists();
           });
           break;
         default:
@@ -50,7 +50,7 @@ class _ArtistListPageState extends State<ArtistListPage>
       }
     });
 
-    viewModel.fetchArtists();
+    _artistViewModel.fetchArtists();
   }
 
   @override
@@ -64,9 +64,9 @@ class _ArtistListPageState extends State<ArtistListPage>
       ),
       body: RefreshIndicator(
         child: ListView.builder(
-          itemCount: data.length,
+          itemCount: _artistList.length,
           itemBuilder: (context, index) {
-            final artist = data[index];
+            final artist = _artistList[index];
 
             return ListTile(
               title: Text(artist.name),
@@ -83,7 +83,7 @@ class _ArtistListPageState extends State<ArtistListPage>
           },
         ),
         onRefresh: () async {
-          viewModel.fetchArtists();
+          _artistViewModel.fetchArtists();
         },
       ),
     );
@@ -92,7 +92,7 @@ class _ArtistListPageState extends State<ArtistListPage>
   @override
   void dispose() {
     super.dispose();
-    viewModel.dispose(); // Avoid memory leaks
+    _artistViewModel.dispose(); // Avoid memory leaks
   }
 
   @override

@@ -9,14 +9,14 @@ import 'package:flutter_mvvm/presentation/view/splash/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class NavigationRoutes {
-  // Route paths (for subroutes)
-  static const String artistDetailPath = 'detail';
+  // Route paths (for subroutes) - private access
+  static const String _artistDetailPath = 'detail';
 
   // Route names
   static const String initialRoute = '/';
   static const String loginRoute = '/login';
   static const String artistsRoute = '/artists';
-  static const String artistDetailRoute = '$artistsRoute/$artistDetailPath';
+  static const String artistDetailRoute = '$artistsRoute/$_artistDetailPath';
   static const String aboutRoute = '/about';
 }
 
@@ -47,7 +47,7 @@ final router = GoRouter(
                     const NoTransitionPage(child: ArtistListPage()),
                 routes: [
                   GoRoute(
-                      path: NavigationRoutes.artistDetailPath,
+                      path: NavigationRoutes._artistDetailPath,
                       builder: (context, state) {
                         final artist = state.extra as Artist;
                         return ArtistDetailPage(artist: artist);

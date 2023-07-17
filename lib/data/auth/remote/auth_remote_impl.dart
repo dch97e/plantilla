@@ -15,7 +15,7 @@ class AuthRemoteImpl {
       );
 
       await CredentialsWallet.saveAll(response.data);
-    } on Exception catch (e) {
+    } catch (e) {
       throw RemoteErrorMapper.getException(e);
     }
   }
