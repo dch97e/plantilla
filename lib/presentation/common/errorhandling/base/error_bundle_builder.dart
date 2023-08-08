@@ -7,19 +7,19 @@ import 'package:flutter_mvvm/presentation/common/errorhandling/app_error.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle.dart';
 
 abstract class ErrorBundleBuilder {
-  final Exception exception;
-  final AppAction appAction;
+  final Exception _exception;
+  final AppAction _appAction;
 
-  ErrorBundleBuilder.create(this.exception, this.appAction);
+  ErrorBundleBuilder.create(this._exception, this._appAction);
 
   ErrorBundle handle(HTTPException exception, AppAction appAction);
 
   ErrorBundle build() {
     AppError appError = AppError.UNKNOWN;
 
-    switch (exception.runtimeType) {
+    switch (_exception.runtimeType) {
       case HTTPException:
-        return handle((exception as HTTPException), appAction);
+        return handle((_exception as HTTPException), _appAction);
       case TimeoutException:
         appError = AppError.TIMEOUT;
         break;
@@ -28,6 +28,6 @@ abstract class ErrorBundleBuilder {
         break;
     }
 
-    return ErrorBundle(exception, appAction, appError);
+    return ErrorBundle(_exception, _appAction, appError);
   }
 }

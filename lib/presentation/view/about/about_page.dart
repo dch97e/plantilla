@@ -15,13 +15,13 @@ class AboutPage extends StatefulWidget {
 
 class _AboutPageState extends State<AboutPage>
     with AutomaticKeepAliveClientMixin {
-  final viewModel = inject<AuthViewModel>();
+  final _authViewModel = inject<AuthViewModel>();
 
   @override
   void initState() {
     super.initState();
 
-    viewModel.signOutState.stream.listen((state) {
+    _authViewModel.signOutState.stream.listen((state) {
       switch (state) {
         case true:
           context.go(NavigationRoutes.initialRoute);
@@ -53,7 +53,7 @@ class _AboutPageState extends State<AboutPage>
           ),
           ElevatedButton(
             onPressed: () {
-              viewModel.signOut();
+              _authViewModel.signOut();
             },
             child: Text(AppLocalizations.of(context)!.sign_out),
           )
@@ -65,7 +65,7 @@ class _AboutPageState extends State<AboutPage>
   @override
   void dispose() {
     super.dispose();
-    viewModel.dispose(); // Avoid memory leaks
+    _authViewModel.dispose(); // Avoid memory leaks
   }
 
   @override

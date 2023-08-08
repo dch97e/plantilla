@@ -9,18 +9,18 @@ class RemoteErrorMapper {
 
   static Exception getException(dynamic error) {
     switch (error.runtimeType) {
-      case DioError:
+      case DioException:
         switch (error.type) {
-          case DioErrorType.connectionTimeout:
+          case DioExceptionType.connectionTimeout:
             return TimeoutException(error.message);
-          case DioErrorType.sendTimeout:
+          case DioExceptionType.sendTimeout:
             return TimeoutException(error.message);
-          case DioErrorType.receiveTimeout:
+          case DioExceptionType.receiveTimeout:
             return TimeoutException(error.message);
-          case DioErrorType.badResponse:
+          case DioExceptionType.badResponse:
             return HTTPException(error.response?.statusCode ?? -1,
                 error.response?.data.toString() ?? "");
-          case DioErrorType.unknown:
+          case DioExceptionType.unknown:
             if (error.error.toString().contains("SocketException")) {
               return SocketException(error.error.toString());
             }

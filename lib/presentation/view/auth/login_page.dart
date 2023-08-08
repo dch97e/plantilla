@@ -5,6 +5,7 @@ import 'package:flutter_mvvm/presentation/common/localization/app_localizations.
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_styles.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
+import 'package:flutter_mvvm/presentation/common/widget/input/password_form_field.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:go_router/go_router.dart';
@@ -19,18 +20,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final viewModel = inject<AuthViewModel>();
+  final _authViewModel = inject<AuthViewModel>();
 
-  bool _passwordHidden = true;
   final _formKey = GlobalKey<FormState>();
-  final emailFieldController = TextEditingController();
-  final passwordFieldController = TextEditingController();
+  final _emailFieldController = TextEditingController();
+  final _passwordFieldController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
 
-    viewModel.loginState.stream.listen((state) {
+    _authViewModel.loginState.stream.listen((state) {
       switch (state.status) {
         case Status.LOADING:
           LoadingOverlay.show(context);
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppDimens.mediumMargin),
                       child: TextFormField(
-                        controller: emailFieldController,
+                        controller: _emailFieldController,
                         keyboardType: TextInputType.text,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -101,10 +101,8 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppDimens.mediumMargin),
-                      child: TextFormField(
-                        controller: passwordFieldController,
-                        keyboardType: TextInputType.text,
-                        obscureText: _passwordHidden,
+                      child: PasswordFormField(
+                        controller: _passwordFieldController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return AppLocalizations.of(context)!
@@ -118,14 +116,6 @@ class _LoginPageState extends State<LoginPage> {
                               AppLocalizations.of(context)!.sign_in_password,
                           hintText: AppLocalizations.of(context)!
                               .sign_in_password_hint,
-                          suffixIcon: InkWell(
-                            onTap: _togglePasswordView,
-                            child: Icon(
-                              _passwordHidden
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                          ),
                         ),
                       ),
                     ),
@@ -136,8 +126,8 @@ class _LoginPageState extends State<LoginPage> {
                           FocusManager.instance.primaryFocus
                               ?.unfocus(); // Close keyboard
 
-                          viewModel.login(emailFieldController.text,
-                              passwordFieldController.text);
+                          _authViewModel.login(_emailFieldController.text,
+                              _passwordFieldController.text);
                         }
                       },
                       child: Text(AppLocalizations.of(context)!.sign_in),
@@ -156,12 +146,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void dispose() {
     super.dispose();
-    viewModel.dispose(); // Avoid memory leaks
-  }
-
-  void _togglePasswordView() {
-    setState(() {
-      _passwordHidden = !_passwordHidden;
-    });
+    _authViewModel.dispose(); // Avoid memory leaks
   }
 }
