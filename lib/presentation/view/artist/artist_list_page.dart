@@ -78,7 +78,7 @@ class _ArtistListPageState extends State<ArtistListPage>
                 ),
               ),
               onTap: (() => context.go(NavigationRoutes.artistDetailRoute,
-                  extra: artist)),
+                  extra: artist.toJson())),
             );
           },
         ),

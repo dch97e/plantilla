@@ -49,8 +49,8 @@ final router = GoRouter(
                   GoRoute(
                       path: NavigationRoutes._artistDetailPath,
                       builder: (context, state) {
-                        final artist = state.extra as Artist;
-                        return ArtistDetailPage(artist: artist);
+                        final extra = state.extra as Map<String, dynamic>;
+                        return ArtistDetailPage(artist: Artist.fromJson(extra));
                       }),
                 ]),
           ]),
