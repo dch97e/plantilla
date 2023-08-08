@@ -4,7 +4,7 @@ class AppStyles {
   // App Theme
   static ThemeData appTheme = ThemeData(
     brightness: Brightness.light,
-    primarySwatch: Colors.blue,
+    colorSchemeSeed: Colors.blue,
     useMaterial3: true,
   ).copyWith(
     pageTransitionsTheme: const PageTransitionsTheme(
@@ -17,7 +17,7 @@ class AppStyles {
 
   static ThemeData appDarkTheme = ThemeData(
     brightness: Brightness.dark,
-    primarySwatch: Colors.blue,
+    colorSchemeSeed: Colors.blue,
     useMaterial3: true,
   ).copyWith(
     pageTransitionsTheme: const PageTransitionsTheme(
