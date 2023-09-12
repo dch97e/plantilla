@@ -4,6 +4,8 @@ class CredentialsWallet {
   static const refreshTokenKey = 'refresh_token';
   static const accessTokenKey = 'access_token';
   static const expiresInKey = 'expires_in';
+  static const storage = FlutterSecureStorage(
+      aOptions: AndroidOptions(encryptedSharedPreferences: true));
 
   static getRefreshToken() async {
     return await _getString(refreshTokenKey);
@@ -38,19 +40,16 @@ class CredentialsWallet {
   }
 
   static clearAll() async {
-    const storage = FlutterSecureStorage();
     await storage.delete(key: refreshTokenKey);
     await storage.delete(key: accessTokenKey);
     await storage.delete(key: expiresInKey);
   }
 
   static _storeString(String key, String value) async {
-    const storage = FlutterSecureStorage();
     await storage.write(key: key, value: value);
   }
 
   static _getString(String key) async {
-    const storage = FlutterSecureStorage();
     return await storage.read(key: key) ?? '';
   }
 
