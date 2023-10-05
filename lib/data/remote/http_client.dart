@@ -21,13 +21,13 @@ class HttpClient {
       ..add(QueuedInterceptorsWrapper(onRequest: (options, handler) async {
         await _addAuthHeader(options.headers);
         handler.next(options);
-      }, onError: (DioError error, handler) async {
+      }, onError: (DioException error, handler) async {
         if (error.response?.statusCode == 401) {
           // Refresh token and try again
           try {
             await _refreshToken();
             return handler.resolve(await _retry(error.requestOptions));
-          } on DioError catch (error) {
+          } on DioException catch (error) {
             return handler.next(error);
           }
         }

@@ -52,7 +52,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error_default => 'An error has occurred.';
 
   @override
-  String get error_timeout => 'We are experiencing some temporary problems. Please, try again in a few moments.';
+  String get error_timeout => 'We are experiencing some temporary problems. Please try again in a few moments.';
+
+  @override
+  String get error_unauthorized => 'Your session has expired and we have not been able to renew it. Please sign in again.';
 
   @override
   String get error_no_internet => 'There is no Internet connection. Check your Wi-Fi or mobile data connection, please.';
@@ -61,7 +64,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error_server => 'We are experiencing some problems at this time. Please come back later.';
 
   @override
+  String get error_not_found => 'We can not find what you need. Please try again later.';
+
+  @override
   String get error_empty_field => 'This field can not be empty';
+
+  @override
+  String get error_support_code => 'Support Code';
 
   @override
   String get action_ok => 'OK';

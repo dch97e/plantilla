@@ -186,8 +186,14 @@ abstract class AppLocalizations {
   /// No description provided for @error_timeout.
   ///
   /// In en, this message translates to:
-  /// **'We are experiencing some temporary problems. Please, try again in a few moments.'**
+  /// **'We are experiencing some temporary problems. Please try again in a few moments.'**
   String get error_timeout;
+
+  /// No description provided for @error_unauthorized.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has expired and we have not been able to renew it. Please sign in again.'**
+  String get error_unauthorized;
 
   /// No description provided for @error_no_internet.
   ///
@@ -201,11 +207,23 @@ abstract class AppLocalizations {
   /// **'We are experiencing some problems at this time. Please come back later.'**
   String get error_server;
 
+  /// No description provided for @error_not_found.
+  ///
+  /// In en, this message translates to:
+  /// **'We can not find what you need. Please try again later.'**
+  String get error_not_found;
+
   /// No description provided for @error_empty_field.
   ///
   /// In en, this message translates to:
   /// **'This field can not be empty'**
   String get error_empty_field;
+
+  /// No description provided for @error_support_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Support Code'**
+  String get error_support_code;
 
   /// No description provided for @action_ok.
   ///

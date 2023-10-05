@@ -5,8 +5,9 @@ class ErrorBundle {
   final Exception exception;
   final AppAction appAction;
   final AppError appError;
+  final String errorMessage;
 
-  ErrorBundle(this.exception, this.appAction, this.appError);
+  ErrorBundle(this.exception, this.appAction, this.appError, this.errorMessage);
 
   String get message {
     return exception.toString();

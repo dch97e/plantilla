@@ -52,16 +52,25 @@ class AppLocalizationsEs extends AppLocalizations {
   String get error_default => 'Ha ocurrido un error.';
 
   @override
-  String get error_timeout => 'Estamos experimentando algunos problemas temporales. Por favor, inténtelo de nuevo en unos minutos.';
+  String get error_timeout => 'Estamos experimentando algunos problemas temporales. Por favor, inténtalo de nuevo en unos minutos.';
+
+  @override
+  String get error_unauthorized => 'Tu sesión ha expirado y no hemos podido renovarla. Por favor, inicia sesión de nuevo.';
 
   @override
   String get error_no_internet => 'No hay conexión a Internet. Comprueba tu conexión Wi-Fi o de datos móviles, por favor.';
 
   @override
-  String get error_server => 'Estamos experimentando algunos problemas en este momento. Por favor, vuelva de nuevo mas tarde.';
+  String get error_server => 'Estamos experimentando algunos problemas en este momento. Por favor, vuelve de nuevo mas tarde.';
+
+  @override
+  String get error_not_found => 'No encontramos lo que necesitas. Por favor, inténtalo de nuevo más tarde.';
 
   @override
   String get error_empty_field => 'Este campo no puede estar vacío';
+
+  @override
+  String get error_support_code => 'Código de soporte';
 
   @override
   String get action_ok => 'Aceptar';

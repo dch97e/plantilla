@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
+import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 
 import 'di/app_modules.dart';
@@ -24,7 +25,10 @@ class MyApp extends StatelessWidget {
       routerConfig: router,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      onGenerateTitle: (context) => AppLocalizations.of(context)!.app_title,
+      onGenerateTitle: (context) {
+        LocalizationManager.init(context: context);
+        return AppLocalizations.of(context)!.app_title;
+      },
       debugShowCheckedModeBanner: false,
     );
   }

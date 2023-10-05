@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/presentation/common/errorhandling/app_error.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle.dart';
 import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
+import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 
 class ErrorOverlay {
   BuildContext _context;
@@ -12,7 +12,8 @@ class ErrorOverlay {
     return ErrorOverlay._create(context);
   }
 
-  void show(ErrorBundle? error, {VoidCallback? onRetry}) {
+  void show(ErrorBundle? error,
+      {VoidCallback? onRetry, bool? showSupportCode}) {
     if (error == null) {
       return;
     }
@@ -25,7 +26,21 @@ class ErrorOverlay {
           onWillPop: () => Future.value(false),
           child: AlertDialog(
             title: Text(AppLocalizations.of(context)!.error_title),
-            content: Text(_getErrorMessage(context, error.appError)), // Change
+            content: showSupportCode != false
+                ? RichText(
+                    text: TextSpan(
+                    text:
+                        '${error.errorMessage}\n\n${localizations.error_support_code}: ',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onBackground),
+                    children: [
+                      TextSpan(
+                          text:
+                              '${error.appAction.value}/${error.appError.value}',
+                          style: const TextStyle(fontWeight: FontWeight.bold))
+                    ],
+                  ))
+                : Text(error.errorMessage),
             actions: [
               TextButton(
                 child: Text(AppLocalizations.of(context)!.action_ok),
@@ -48,20 +63,5 @@ class ErrorOverlay {
         );
       },
     );
-  }
-
-  String _getErrorMessage(BuildContext context, AppError appError) {
-    final locs = AppLocalizations.of(context)!;
-
-    switch (appError) {
-      case AppError.NO_INTERNET:
-        return locs.error_no_internet;
-      case AppError.TIMEOUT:
-        return locs.error_timeout;
-      case AppError.SERVER:
-        return locs.error_server;
-      default:
-        return locs.error_default;
-    }
   }
 }
