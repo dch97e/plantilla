@@ -24,9 +24,11 @@ abstract class ErrorBundleBuilder {
         return handle((exception as HTTPException), appAction);
       case TimeoutException:
         appError = AppError.TIMEOUT;
+        errorMessage = localizations.error_timeout;
         break;
       case SocketException:
         appError = AppError.NO_INTERNET;
+        errorMessage = localizations.error_no_internet;
         break;
     }
 

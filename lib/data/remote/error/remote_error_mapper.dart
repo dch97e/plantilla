@@ -21,6 +21,7 @@ class RemoteErrorMapper {
             return HTTPException(error.response?.statusCode ?? -1,
                 error.response?.data.toString() ?? "");
           case DioExceptionType.unknown:
+          case DioExceptionType.connectionError:
             if (error.error.toString().contains("SocketException")) {
               return SocketException(error.error.toString());
             }
