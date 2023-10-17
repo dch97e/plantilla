@@ -37,10 +37,9 @@ dependencies:
   dio: ^5.3.3
   flutter_secure_storage: ^9.0.0
   get_it: ^7.6.4
-  go_router: ^11.1.2
+  go_router: ^11.1.4
   cached_network_image: ^3.3.0
   animations: ^2.0.8
-  flutter_native_splash: ^2.3.3
 
   light_sliver_view:
     git:
@@ -55,6 +54,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_native_splash: ^2.3.3
+  flutter_launcher_icons: ^0.13.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -110,3 +111,11 @@ flutter_native_splash:
   # After changing this config, run: flutter pub run flutter_native_splash:create
   color: "#ffffff"
   image: assets/images/splash.png
+
+flutter_launcher_icons:
+  # After changing this config, run: dart run flutter_launcher_icons
+  android: "ic_launcher"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21
