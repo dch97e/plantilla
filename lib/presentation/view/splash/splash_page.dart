@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/di/app_modules.dart';
+import 'package:flutter_mvvm/core/di/app_modules.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   State<SplashPage> createState() => _SplashPageState();

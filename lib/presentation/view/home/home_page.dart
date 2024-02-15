@@ -3,7 +3,7 @@ import 'package:flutter_mvvm/presentation/common/localization/app_localizations.
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.navigationShell}) : super(key: key);
+  const HomePage({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 

@@ -13,12 +13,14 @@ class HttpClient {
     return _httpClient;
   }
 
-  // https://github.com/flutterchina/dio/blob/develop/example/lib/queued_interceptor_crsftoken.dart
-  // https://gist.github.com/TimurMukhortov/a1c9819e3779015e54bc3964b7d2308a
   HttpClient._internal() {
     dio.interceptors
       ..add(DioLoggingInterceptor())
       ..add(QueuedInterceptorsWrapper(onRequest: (options, handler) async {
+        // Token refresh logic
+        // https://github.com/flutterchina/dio/blob/develop/example/lib/queued_interceptor_crsftoken.dart
+        // https://gist.github.com/TimurMukhortov/a1c9819e3779015e54bc3964b7d2308a
+
         await _addAuthHeader(options.headers);
         handler.next(options);
       }, onError: (DioException error, handler) async {

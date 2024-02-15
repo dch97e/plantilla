@@ -6,8 +6,7 @@ import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle
 import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 
 class AuthErrorBuilder extends ErrorBundleBuilder {
-  AuthErrorBuilder.create(Exception exception, AppAction appAction)
-      : super.create(exception, appAction);
+  AuthErrorBuilder.create(super.exception, super.appAction) : super.create();
 
   @override
   ErrorBundle handle(HTTPException exception, AppAction appAction) {

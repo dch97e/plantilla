@@ -8,7 +8,7 @@ import 'package:light_sliver_view/light_sliver_view.dart';
 class ArtistDetailPage extends StatefulWidget {
   final Artist artist;
 
-  const ArtistDetailPage({Key? key, required this.artist}) : super(key: key);
+  const ArtistDetailPage({super.key, required this.artist});
 
   @override
   State<ArtistDetailPage> createState() => _ArtistDetailPageState();

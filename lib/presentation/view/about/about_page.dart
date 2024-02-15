@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/di/app_modules.dart';
+import 'package:flutter_mvvm/core/di/app_modules.dart';
 import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.da
 import 'package:go_router/go_router.dart';
 
 class AboutPage extends StatefulWidget {
-  const AboutPage({Key? key}) : super(key: key);
+  const AboutPage({super.key});
 
   @override
   State<AboutPage> createState() => _AboutPageState();

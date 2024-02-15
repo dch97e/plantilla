@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/di/app_modules.dart';
+import 'package:flutter_mvvm/core/di/app_modules.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
 import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'viewmodel/auth_view_model.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();

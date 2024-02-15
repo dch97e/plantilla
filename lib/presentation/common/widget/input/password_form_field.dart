@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class PasswordFormField extends StatefulWidget {
   const PasswordFormField(
-      {Key? key, this.controller, this.validator, this.decoration})
-      : super(key: key);
+      {super.key, this.controller, this.validator, this.decoration});
 
   final TextEditingController? controller;
   final FormFieldValidator<String?>? validator;

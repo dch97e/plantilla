@@ -6,8 +6,7 @@ import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle
 import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 
 class ArtistErrorBuilder extends ErrorBundleBuilder {
-  ArtistErrorBuilder.create(Exception exception, AppAction appAction)
-      : super.create(exception, appAction);
+  ArtistErrorBuilder.create(super.exception, super.appAction) : super.create();
 
   @override
   ErrorBundle handle(HTTPException exception, AppAction appAction) {

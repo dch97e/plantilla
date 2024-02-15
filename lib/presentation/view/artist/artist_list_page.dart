@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/di/app_modules.dart';
+import 'package:flutter_mvvm/core/di/app_modules.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
 import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
@@ -12,7 +12,7 @@ import 'package:go_router/go_router.dart';
 import 'viewmodel/artist_view_model.dart';
 
 class ArtistListPage extends StatefulWidget {
-  const ArtistListPage({Key? key}) : super(key: key);
+  const ArtistListPage({super.key});
 
   @override
   State<ArtistListPage> createState() => _ArtistListPageState();
