@@ -1,6 +1,6 @@
 import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle.dart';
 
-enum Status { IDLE, LOADING, COMPLETED, ERROR }
+enum Status { IDLE, LOADING, SUCCESS, ERROR }
 
 class ResourceState {
   Status status;
@@ -13,7 +13,7 @@ class ResourceState {
 
   ResourceState.loading() : status = Status.LOADING;
 
-  ResourceState.completed(this.data) : status = Status.COMPLETED;
+  ResourceState.success(this.data) : status = Status.SUCCESS;
 
   ResourceState.error(this.error) : status = Status.ERROR;
 }

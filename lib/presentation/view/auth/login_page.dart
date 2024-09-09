@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
         case Status.LOADING:
           LoadingOverlay.show(context);
           break;
-        case Status.COMPLETED:
+        case Status.SUCCESS:
           LoadingOverlay.hide();
           context.go(NavigationRoutes.artistsRoute);
           break;

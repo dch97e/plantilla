@@ -32,7 +32,7 @@ class _ArtistListPageState extends State<ArtistListPage>
         case Status.LOADING:
           LoadingOverlay.show(context);
           break;
-        case Status.COMPLETED:
+        case Status.SUCCESS:
           LoadingOverlay.hide();
           setState(() {
             _artistList = state.data;
