@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/core/di/app_modules.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
-import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
+import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_styles.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
@@ -69,10 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     const SizedBox(height: AppDimens.bigMargin),
-                    Text(AppLocalizations.of(context)!.sign_in_welcome_title,
+                    Text(localizations.sign_in_welcome_title,
                         style: AppStyles.extraBigTextStyle),
                     const SizedBox(height: AppDimens.extraSmallMargin),
-                    Text(AppLocalizations.of(context)!.sign_in_welcome_subtitle,
+                    Text(localizations.sign_in_welcome_subtitle,
                         style: AppStyles.smallTextStyle),
                     const SizedBox(height: AppDimens.semiBigMargin),
                     Padding(
@@ -83,17 +83,14 @@ class _LoginPageState extends State<LoginPage> {
                         keyboardType: TextInputType.text,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return AppLocalizations.of(context)!
-                                .error_empty_field;
+                            return localizations.error_empty_field;
                           }
                           return null;
                         },
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(),
-                          labelText:
-                              AppLocalizations.of(context)!.sign_in_username,
-                          hintText: AppLocalizations.of(context)!
-                              .sign_in_username_hint,
+                          labelText: localizations.sign_in_username,
+                          hintText: localizations.sign_in_username_hint,
                         ),
                       ),
                     ),
@@ -105,17 +102,14 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _passwordFieldController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return AppLocalizations.of(context)!
-                                .error_empty_field;
+                            return localizations.error_empty_field;
                           }
                           return null;
                         },
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(),
-                          labelText:
-                              AppLocalizations.of(context)!.sign_in_password,
-                          hintText: AppLocalizations.of(context)!
-                              .sign_in_password_hint,
+                          labelText: localizations.sign_in_password,
+                          hintText: localizations.sign_in_password_hint,
                         ),
                       ),
                     ),
@@ -130,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                               _passwordFieldController.text);
                         }
                       },
-                      child: Text(AppLocalizations.of(context)!.sign_in),
+                      child: Text(localizations.sign_in),
                     ),
                     const SizedBox(height: AppDimens.semiBigMargin),
                   ],

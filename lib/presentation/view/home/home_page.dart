@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
+import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,11 +32,11 @@ class _HomePageState extends State<HomePage> {
       destinations: [
         NavigationDestination(
           icon: const Icon(Icons.home_outlined),
-          label: AppLocalizations.of(context)!.home_title,
+          label: localizations.home_title,
         ),
         NavigationDestination(
           icon: const Icon(Icons.info_outlined),
-          label: AppLocalizations.of(context)!.about_title,
+          label: localizations.about_title,
         ),
       ],
     );
