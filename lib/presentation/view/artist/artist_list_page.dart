@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/core/di/app_modules.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
-import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
+import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
@@ -32,7 +32,7 @@ class _ArtistListPageState extends State<ArtistListPage>
         case Status.LOADING:
           LoadingOverlay.show(context);
           break;
-        case Status.COMPLETED:
+        case Status.SUCCESS:
           LoadingOverlay.hide();
           setState(() {
             _artistList = state.data;
@@ -59,7 +59,7 @@ class _ArtistListPageState extends State<ArtistListPage>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.artists_title),
+        title: Text(localizations.artists_title),
         centerTitle: true,
       ),
       body: RefreshIndicator(

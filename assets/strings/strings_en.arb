@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "app_title": "Flutter MVVM",
   "home_title": "Home",
   "artists_title": "Artists",

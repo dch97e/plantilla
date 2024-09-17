@@ -26,6 +26,6 @@ class AuthRemoteImpl {
   }
 
   Future<void> signOut() async {
-    CredentialsWallet.clearAll();
+    await CredentialsWallet.clearAll();
   }
 }
