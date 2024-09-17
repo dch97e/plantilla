@@ -23,7 +23,7 @@ class AuthViewModel extends BaseViewModel {
 
     _authRepository
         .login(user, password)
-        .then((value) => loginState.add(ResourceState.completed(null)))
+        .then((value) => loginState.add(ResourceState.success(null)))
         .catchError((e) {
       loginState.add(ResourceState.error(
           AuthErrorBuilder.create(e, AppAction.SIGN_IN).build()));

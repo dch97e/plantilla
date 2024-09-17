@@ -19,7 +19,7 @@ class ArtistViewModel extends BaseViewModel {
 
     _artistRepository
         .getArtists()
-        .then((value) => artistListState.add(ResourceState.completed(value)))
+        .then((value) => artistListState.add(ResourceState.success(value)))
         .catchError((e) {
       artistListState.add(ResourceState.error(
           ArtistErrorBuilder.create(e, AppAction.GET_ARTISTS).build()));

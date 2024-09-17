@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/common/errorhandling/base/error_bundle.dart';
-import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
 
 class ErrorOverlay {
@@ -25,14 +24,14 @@ class ErrorOverlay {
         return WillPopScope(
           onWillPop: () => Future.value(false),
           child: AlertDialog(
-            title: Text(AppLocalizations.of(context)!.error_title),
+            title: Text(localizations.error_title),
             content: showSupportCode != false
                 ? RichText(
                     text: TextSpan(
                     text:
                         '${error.errorMessage}\n\n${localizations.error_support_code}: ',
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.onBackground),
+                        color: Theme.of(context).colorScheme.onSurface),
                     children: [
                       TextSpan(
                           text:
@@ -43,7 +42,7 @@ class ErrorOverlay {
                 : Text(error.errorMessage),
             actions: [
               TextButton(
-                child: Text(AppLocalizations.of(context)!.action_ok),
+                child: Text(localizations.action_ok),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -55,7 +54,7 @@ class ErrorOverlay {
                     Navigator.of(context).pop();
                     onRetry?.call();
                   },
-                  child: Text(AppLocalizations.of(context)!.action_retry),
+                  child: Text(localizations.action_retry),
                 ),
               ),
             ],

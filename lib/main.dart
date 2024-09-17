@@ -26,6 +26,15 @@ class MyApp extends StatelessWidget {
       routerConfig: router,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      builder: (context, child) {
+        return GestureDetector(
+          onTap: () {
+            // Remove focus when touching outside a focused area
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: child,
+        );
+      },
       onGenerateTitle: (context) {
         LocalizationManager.init(context: context);
         return localizations.app_title;
