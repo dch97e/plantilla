@@ -9,7 +9,7 @@ class RemoteErrorMapper {
 
   static Exception getException(dynamic error) {
     switch (error.runtimeType) {
-      case DioException:
+      case DioException _:
         switch (error.type) {
           case DioExceptionType.connectionTimeout:
             return TimeoutException(error.message);
@@ -30,7 +30,7 @@ class RemoteErrorMapper {
           default:
             return Exception();
         }
-      case TypeError:
+      case TypeError _:
         return Exception('Type error');
       default:
         return error is Exception ? error : Exception();
