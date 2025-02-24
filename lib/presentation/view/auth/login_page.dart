@@ -10,6 +10,7 @@ import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../common/utils/utils.dart';
 import 'viewmodel/auth_view_model.dart';
 
 class LoginPage extends StatefulWidget {
@@ -81,12 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextFormField(
                         controller: _emailFieldController,
                         keyboardType: TextInputType.text,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return localizations.error_empty_field;
-                          }
-                          return null;
-                        },
+                        validator: validateEmail,
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(),
                           labelText: localizations.sign_in_username,
@@ -100,12 +96,8 @@ class _LoginPageState extends State<LoginPage> {
                           horizontal: AppDimens.mediumMargin),
                       child: PasswordFormField(
                         controller: _passwordFieldController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return localizations.error_empty_field;
-                          }
-                          return null;
-                        },
+                        validator: (value) => validatePassword(value!,
+                            _passwordFieldController, _passwordFieldController),
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(),
                           labelText: localizations.sign_in_password,

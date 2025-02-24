@@ -227,6 +227,24 @@ abstract class AppLocalizations {
   /// **'Support Code'**
   String get error_support_code;
 
+  /// No description provided for @error_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get error_email;
+
+  /// No description provided for @error_password_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords don\'\'t match'**
+  String get error_password_not_match;
+
+  /// No description provided for @error_reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum 8 characters, 1 lowercase, 1 uppercase, 1 digit and 1 special character'**
+  String get error_reset_password;
+
   /// No description provided for @action_ok.
   ///
   /// In en, this message translates to:

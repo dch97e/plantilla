@@ -22,6 +22,9 @@
   "error_not_found": "No encontramos lo que necesitas. Por favor, inténtalo de nuevo más tarde.",
   "error_empty_field": "Este campo no puede estar vacío",
   "error_support_code": "Código de soporte",
+  "error_email": "Introduce un correo electrónico válido",
+  "error_reset_password": "Mínimo 8 caracteres, 1 minúscula, 1 mayúscula, 1 dígito y 1 caracter especial",
+  "error_password_not_match": "Las contraseñas no coinciden",
   "action_ok": "Aceptar",
   "action_cancel": "Cancelar",
   "action_retry": "Reintentar"
