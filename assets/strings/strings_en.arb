@@ -22,6 +22,9 @@
   "error_not_found": "We can not find what you need. Please try again later.",
   "error_empty_field": "This field can not be empty",
   "error_support_code": "Support Code",
+  "error_email": "Enter a valid email",
+  "error_password_not_match": "Passwords don''t match",
+  "error_reset_password": "Minimum 8 characters, 1 lowercase, 1 uppercase, 1 digit and 1 special character",
   "action_ok": "OK",
   "action_cancel": "Cancel",
   "action_retry": "Retry"

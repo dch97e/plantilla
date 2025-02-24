@@ -75,6 +75,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get error_support_code => 'Código de soporte';
 
   @override
+  String get error_email => 'Introduce un correo electrónico válido';
+
+  @override
+  String get error_password_not_match => 'Las contraseñas no coinciden';
+
+  @override
+  String get error_reset_password => 'Mínimo 8 caracteres, 1 minúscula, 1 mayúscula, 1 dígito y 1 caracter especial';
+
+  @override
   String get action_ok => 'Aceptar';
 
   @override
