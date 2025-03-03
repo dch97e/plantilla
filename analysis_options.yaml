@@ -104,5 +104,6 @@ linter:
 analyzer:
   errors:
     avoid_redundant_argument_values: ignore
+    use_build_context_synchronously: ignore
   exclude:
     "**/app_localizations*.dart"
