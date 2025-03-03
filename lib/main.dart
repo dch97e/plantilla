@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/presentation/common/localization/app_localizations.dart';
-import 'package:flutter_mvvm/presentation/common/localization/localization_manager.dart';
-import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 
 import 'core/di/app_modules.dart';
+import 'presentation/common/localization/app_localizations.dart';
+import 'presentation/common/localization/localization_manager.dart';
 import 'presentation/common/resources/app_styles.dart';
+import 'presentation/navigation/navigation_routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
