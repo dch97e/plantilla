@@ -1,16 +1,15 @@
 import '../../shared.dart';
 
-enum Status { IDLE, LOADING, SUCCESS, ERROR }
+sealed class ResourceState<T> {}
 
-class ResourceState {
-  ResourceState(this.status, this.data, this.error);
+class LoadingState extends ResourceState {}
 
-  ResourceState.idle() : status = Status.IDLE;
-  ResourceState.loading() : status = Status.LOADING;
-  ResourceState.success(this.data) : status = Status.SUCCESS;
-  ResourceState.error(this.error) : status = Status.ERROR;
+class SuccessState<T> extends ResourceState {
+  SuccessState(this.data);
+  final T data;
+}
 
-  Status status;
-  dynamic data;
-  ErrorBundle? error;
+class ErrorState extends ResourceState {
+  ErrorState(this.error);
+  ErrorBundle error;
 }

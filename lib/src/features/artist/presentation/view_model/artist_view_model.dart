@@ -11,14 +11,14 @@ class ArtistViewModel extends BaseViewModel {
       StreamController<ResourceState>();
 
   Future<void> fetchArtists() async {
-    artistListState.add(ResourceState.loading());
+    artistListState.add(LoadingState());
 
     _artistRepository
         .getArtists()
-        .then((value) => artistListState.add(ResourceState.success(value)))
+        .then((value) => artistListState.add(SuccessState(value)))
         .catchError((e) {
       artistListState.add(
-        ResourceState.error(
+        ErrorState(
           ArtistErrorBuilder.create(e, AppAction.GET_ARTISTS).build(),
         ),
       );

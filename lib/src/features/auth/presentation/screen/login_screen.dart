@@ -24,17 +24,15 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
 
     _authViewModel.loginState.stream.listen((state) {
-      switch (state.status) {
-        case Status.LOADING:
+      switch (state) {
+        case LoadingState():
           LoadingOverlay.show(context);
-        case Status.SUCCESS:
+        case SuccessState():
           LoadingOverlay.hide();
           context.go(NavigationRoutes.artistsRoute);
-        case Status.ERROR:
+        case ErrorState():
           LoadingOverlay.hide();
           ErrorOverlay.of(context).show(state.error);
-        default:
-          LoadingOverlay.hide();
       }
     });
   }

@@ -16,14 +16,14 @@ class AuthViewModel extends BaseViewModel {
   StreamController<bool> authenticatedState = StreamController<bool>();
 
   Future<void> login(String user, String password) async {
-    loginState.add(ResourceState.loading());
+    loginState.add(LoadingState());
 
     _authRepository
         .login(user, password)
-        .then((value) => loginState.add(ResourceState.success(null)))
+        .then((value) => loginState.add(SuccessState(value)))
         .catchError((e) {
       loginState.add(
-        ResourceState.error(
+        ErrorState(
           AuthErrorBuilder.create(e, AppAction.SIGN_IN).build(),
         ),
       );
