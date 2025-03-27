@@ -1,11 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
 import '../../../../shared/shared.dart';
 import '../../artist.dart';
 import '../../domain/model/artist.dart';
+import '../widget/artist_list_row.dart';
 
 class ArtistListScreen extends StatefulWidget {
   const ArtistListScreen({super.key});
@@ -24,22 +23,20 @@ class _ArtistListScreenState extends State<ArtistListScreen>
     super.initState();
 
     _artistViewModel.artistListState.stream.listen((state) {
-      switch (state.status) {
-        case Status.LOADING:
+      switch (state) {
+        case LoadingState():
           LoadingOverlay.show(context);
-        case Status.SUCCESS:
+        case SuccessState():
           LoadingOverlay.hide();
           setState(() {
             _artistList = state.data;
           });
-        case Status.ERROR:
+        case ErrorState():
           LoadingOverlay.hide();
           ErrorOverlay.of(context).show(
             state.error,
             onRetry: _artistViewModel.fetchArtists,
           );
-        default:
-          LoadingOverlay.hide();
       }
     });
 
@@ -55,26 +52,13 @@ class _ArtistListScreenState extends State<ArtistListScreen>
         title: Text(localizations.artists_title),
         centerTitle: true,
       ),
-      body: RefreshIndicator(
+      body: RefreshIndicator.adaptive(
         child: ListView.builder(
           itemCount: _artistList.length,
           itemBuilder: (context, index) {
             final artist = _artistList[index];
 
-            return ListTile(
-              title: Text(artist.name),
-              subtitle: Text(artist.title),
-              leading: Hero(
-                tag: artist.id,
-                child: CircleAvatar(
-                  backgroundImage: CachedNetworkImageProvider(artist.avatar),
-                ),
-              ),
-              onTap: (() => context.go(
-                    NavigationRoutes.artistDetailRoute,
-                    extra: artist.toJson(),
-                  )),
-            );
+            return ArtistListRow(artist: artist);
           },
         ),
         onRefresh: () async {

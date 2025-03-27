@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:light_sliver_view/light_sliver_view.dart';
 
 import '../../../../core/core.dart';
+import '../../../../shared/presentation/cache/file_cache_manager.dart';
 import '../../domain/model/artist.dart';
 
 class ArtistDetailScreen extends StatefulWidget {
@@ -30,7 +31,10 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
               child: ColoredBox(
                 color: Colors.black,
                 child: Image(
-                  image: CachedNetworkImageProvider(widget.artist.avatar),
+                  image: CachedNetworkImageProvider(
+                    widget.artist.avatar,
+                    cacheManager: FileCacheManager.instance,
+                  ),
                   fit: BoxFit.cover,
                   color: Colors.white.setOpacity(0.8),
                   colorBlendMode: BlendMode.modulate,
