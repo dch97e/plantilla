@@ -14,7 +14,9 @@ class LoadingOverlay {
               color:
                   backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
             ),
-            const Center(child: CircularProgressIndicator()),
+            const Center(
+              child: CircularProgressIndicator.adaptive(),
+            ),
           ],
         );
       },
