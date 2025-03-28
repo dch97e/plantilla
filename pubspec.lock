@@ -441,12 +441,11 @@ packages:
   package_rename:
     dependency: "direct dev"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "06b3badef249a259a0f2e14061e610be3311d3c0"
-      url: "https://github.com/mcalvog/package_rename"
-    source: git
-    version: "1.8.0"
+      name: package_rename
+      sha256: c34bdf8cd341209c216c495b97b110b3b8eccd9c7c5f1023c37b2ab310722636
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.0"
   path:
     dependency: transitive
     description:
