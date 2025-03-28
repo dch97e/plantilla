@@ -6,6 +6,10 @@ import 'src/shared/shared.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   AppModules().setup(); // Setup dependency injection
+
+  Log.showDate = true;
+  Log.truncate = true;
+
   runApp(const MyApp());
 }
 

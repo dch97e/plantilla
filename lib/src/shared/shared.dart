@@ -6,6 +6,7 @@ export 'data/remote/network_endpoints.dart';
 export 'domain/model/exception/http_exception.dart';
 export 'presentation/base/base_view_model.dart';
 export 'presentation/base/resource_state.dart';
+export 'presentation/cache/file_cache_manager.dart';
 export 'presentation/errorhandling/app_action.dart';
 export 'presentation/errorhandling/app_error.dart';
 export 'presentation/errorhandling/base/error_bundle.dart';

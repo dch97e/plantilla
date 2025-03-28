@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:light_sliver_view/light_sliver_view.dart';
 
 import '../../../../core/core.dart';
-import '../../../../shared/presentation/cache/file_cache_manager.dart';
+import '../../../../shared/shared.dart';
 import '../../domain/model/artist.dart';
 
 class ArtistDetailScreen extends StatefulWidget {
