@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     _authViewModel.authenticatedState.stream.listen((state) {
       switch (state) {
         case true:
-          context.go(NavigationRoutes.artistsRoute);
+          context.go(NavigationRoutes.magicRoute);
         case false:
           context.go(NavigationRoutes.loginRoute);
       }

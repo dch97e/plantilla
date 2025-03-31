@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
           LoadingOverlay.show(context);
         case SuccessState():
           LoadingOverlay.hide();
-          context.go(NavigationRoutes.artistsRoute);
+          context.go(NavigationRoutes.magicRoute);
         case ErrorState():
           LoadingOverlay.hide();
           ErrorOverlay.of(context).show(state.error);

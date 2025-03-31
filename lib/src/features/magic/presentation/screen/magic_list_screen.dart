@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/core.dart';
+import '../../../../core/di/app_modules.dart';
 import '../../../../shared/shared.dart';
-import '../../artist.dart';
-import '../../domain/model/artist.dart';
-import '../widget/artist_list_row.dart';
+import '../../domain/model/card_model.dart';
+import '../../magic.dart';
 
-class ArtistListScreen extends StatefulWidget {
-  const ArtistListScreen({super.key});
+class MagicListScreen extends StatefulWidget {
+  const MagicListScreen({super.key});
 
   @override
-  State<ArtistListScreen> createState() => _ArtistListScreenState();
+  State<MagicListScreen> createState() => _MagicListScreenState();
 }
 
-class _ArtistListScreenState extends State<ArtistListScreen>
+class _MagicListScreenState extends State<MagicListScreen>
     with AutomaticKeepAliveClientMixin {
-  final _artistViewModel = inject<ArtistViewModel>();
-  List<Artist> _artistList = List.empty();
+  final _artistViewModel = inject<MagicViewModel>();
+  CardModel cards = CardModel(cards: List.empty());
 
   @override
   void initState() {
@@ -29,7 +28,7 @@ class _ArtistListScreenState extends State<ArtistListScreen>
         case SuccessState():
           LoadingOverlay.hide();
           setState(() {
-            _artistList = state.data;
+            cards = state.data;
           });
         case ErrorState():
           LoadingOverlay.hide();
@@ -54,11 +53,11 @@ class _ArtistListScreenState extends State<ArtistListScreen>
       ),
       body: RefreshIndicator.adaptive(
         child: ListView.builder(
-          itemCount: _artistList.length,
+          itemCount: cards.cards!.length,
           itemBuilder: (context, index) {
-            final artist = _artistList[index];
+            final card = cards.cards![index];
 
-            return ArtistListRow(artist: artist);
+            return ArtistListRow(card: card);
           },
         ),
         onRefresh: () async {

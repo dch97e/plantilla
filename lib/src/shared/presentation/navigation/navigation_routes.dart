@@ -2,21 +2,21 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../features/about/about.dart';
-import '../../../features/artist/artist.dart';
-import '../../../features/artist/domain/model/artist.dart';
 import '../../../features/auth/auth.dart';
 import '../../../features/home/home.dart';
+import '../../../features/magic/domain/model/card_model.dart';
+import '../../../features/magic/magic.dart';
 import '../../../features/splash/splash.dart';
 
 abstract class NavigationRoutes {
   // Route paths (for subroutes) - private access
-  static const String _artistDetailPath = 'detail';
+  static const String _magicDetailPath = 'detail';
 
   // Route names
   static const String initialRoute = '/';
   static const String loginRoute = '/login';
-  static const String artistsRoute = '/artists';
-  static const String artistDetailRoute = '$artistsRoute/$_artistDetailPath';
+  static const String magicRoute = '/magic';
+  static const String artistDetailRoute = '$magicRoute/$_magicDetailPath';
   static const String aboutRoute = '/about';
 }
 
@@ -44,16 +44,16 @@ final router = GoRouter(
           navigatorKey: _artistsNavigatorKey,
           routes: [
             GoRoute(
-              path: NavigationRoutes.artistsRoute,
+              path: NavigationRoutes.magicRoute,
               parentNavigatorKey: _artistsNavigatorKey,
               pageBuilder: (context, state) =>
-                  const NoTransitionPage(child: ArtistListScreen()),
+                  const NoTransitionPage(child: MagicListScreen()),
               routes: [
                 GoRoute(
-                  path: NavigationRoutes._artistDetailPath,
+                  path: NavigationRoutes._magicDetailPath,
                   builder: (context, state) {
                     final extra = state.extra! as Map<String, dynamic>;
-                    return ArtistDetailScreen(artist: Artist.fromJson(extra));
+                    return MagicDetailScreen(card: Cards.fromJson(extra));
                   },
                 ),
               ],

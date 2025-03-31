@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import '../../../../shared/shared.dart';
-import '../../artist.dart';
+import '../../magic.dart';
 
-class ArtistViewModel extends BaseViewModel {
-  ArtistViewModel(this._artistRepository);
-  final ArtistRepository _artistRepository;
+class MagicViewModel extends BaseViewModel {
+  MagicViewModel(this._magicRepository);
+  final MagicRepository _magicRepository;
 
   StreamController<ResourceState> artistListState =
       StreamController<ResourceState>();
@@ -13,13 +13,13 @@ class ArtistViewModel extends BaseViewModel {
   Future<void> fetchArtists() async {
     artistListState.add(LoadingState());
 
-    _artistRepository
-        .getArtists()
+    _magicRepository
+        .getCards()
         .then((value) => artistListState.add(SuccessState(value)))
         .catchError((e) {
       artistListState.add(
         ErrorState(
-          ArtistErrorBuilder.create(e, AppAction.GET_ARTISTS).build(),
+          MagicErrorBuilder.create(e, AppAction.GET_ARTISTS).build(),
         ),
       );
     });

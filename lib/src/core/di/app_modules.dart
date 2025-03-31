@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 
-import '../../features/artist/artist.dart';
 import '../../features/auth/auth.dart';
+import '../../features/magic/magic.dart';
 import '../../shared/shared.dart';
 
 final inject = GetIt.instance;
@@ -10,7 +10,7 @@ class AppModules {
   void setup() {
     _setupMainModule();
     _setupAuthModule();
-    _setupArtistModule();
+    _setupMagicModule();
   }
 
   _setupMainModule() {
@@ -24,10 +24,10 @@ class AppModules {
       ..registerFactory(() => AuthViewModel(inject.get()));
   }
 
-  _setupArtistModule() {
+  _setupMagicModule() {
     inject
-      ..registerFactory(() => ArtistRemoteImpl(inject.get()))
-      ..registerFactory<ArtistRepository>(() => ArtistDataImpl(inject.get()))
-      ..registerFactory(() => ArtistViewModel(inject.get()));
+      ..registerFactory(() => MagicRemoteImpl(inject.get()))
+      ..registerFactory<MagicRepository>(() => MagicDataImpl(inject.get()))
+      ..registerFactory(() => MagicViewModel(inject.get()));
   }
 }

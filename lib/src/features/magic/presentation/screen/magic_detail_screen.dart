@@ -4,22 +4,22 @@ import 'package:light_sliver_view/light_sliver_view.dart';
 
 import '../../../../core/core.dart';
 import '../../../../shared/shared.dart';
-import '../../domain/model/artist.dart';
+import '../../domain/model/card_model.dart';
 
-class ArtistDetailScreen extends StatefulWidget {
-  const ArtistDetailScreen({super.key, required this.artist});
-  final Artist artist;
+class MagicDetailScreen extends StatefulWidget {
+  const MagicDetailScreen({super.key, required this.card});
+  final Cards card;
 
   @override
-  State<ArtistDetailScreen> createState() => _ArtistDetailScreenState();
+  State<MagicDetailScreen> createState() => _MagicDetailScreenState();
 }
 
-class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
+class _MagicDetailScreenState extends State<MagicDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: LightSliverView(
-        title: widget.artist.name,
+        title: widget.card.name!,
         centerTitle: true,
         darkModeSupport: true,
         expandedHeight: AppDimens.sliverExpandedHeight,
@@ -27,12 +27,12 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
           fit: StackFit.expand,
           children: [
             Hero(
-              tag: widget.artist.id,
+              tag: widget.card.id!,
               child: ColoredBox(
                 color: Colors.black,
                 child: Image(
                   image: CachedNetworkImageProvider(
-                    widget.artist.avatar,
+                    widget.card.imageUrl!,
                     cacheManager: FileCacheManager.instance,
                   ),
                   fit: BoxFit.cover,
@@ -47,7 +47,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(AppDimens.mediumSize),
                   child: Text(
-                    widget.artist.name,
+                    widget.card.name!,
                     style: const TextStyle(fontSize: 28, color: Colors.white),
                   ),
                 ),
@@ -59,7 +59,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(AppDimens.mediumSize),
-              child: Text(widget.artist.title, style: AppStyles.bigTextStyle),
+              child: Text(widget.card.name!, style: AppStyles.bigTextStyle),
             ),
           ),
         ),

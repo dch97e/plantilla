@@ -1,7 +1,7 @@
 import '../../../../shared/shared.dart';
 
-class ArtistErrorBuilder extends ErrorBundleBuilder {
-  ArtistErrorBuilder.create(super.exception, super.appAction) : super.create();
+class MagicErrorBuilder extends ErrorBundleBuilder {
+  MagicErrorBuilder.create(super.exception, super.appAction) : super.create();
 
   @override
   ErrorBundle handle(HTTPException exception, AppAction appAction) {

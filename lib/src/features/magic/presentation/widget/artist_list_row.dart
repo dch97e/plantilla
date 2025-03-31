@@ -3,30 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../shared/shared.dart';
-import '../../domain/model/artist.dart';
+import '../../domain/model/card_model.dart';
 
 class ArtistListRow extends StatelessWidget {
-  const ArtistListRow({super.key, required this.artist});
+  const ArtistListRow({super.key, required this.card});
 
-  final Artist artist;
+  final Cards card;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(artist.name),
-      subtitle: Text(artist.title),
+      title: Text(card.name!),
+      subtitle: Text(card.name!),
       leading: Hero(
-        tag: artist.id,
+        tag: card.id!,
         child: CircleAvatar(
-          backgroundImage: CachedNetworkImageProvider(
-            artist.avatar,
-            cacheManager: FileCacheManager.instance,
-          ),
+          backgroundImage: card.imageUrl != null
+              ? CachedNetworkImageProvider(
+                  card.imageUrl!,
+                  cacheManager: FileCacheManager.instance,
+                )
+              : null,
         ),
       ),
       onTap: (() => context.go(
             NavigationRoutes.artistDetailRoute,
-            extra: artist.toJson(),
+            extra: card.toJson(),
           )),
     );
   }
